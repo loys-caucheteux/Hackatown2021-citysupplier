@@ -1,0 +1,52 @@
+{% include 'map/header.html' %}
+{% block content %}
+<body>
+<div class=corps>
+    <h4>Create new Account</h4>
+<form class="form-inline" action="{% url 'map:register' %}" method="post">{% csrf_token %}
+    <p class="info">Emails are used as username.</p>
+    <p>E-mail :</p>
+    <div class="form-group {% if form.mail.errors %}has-warning{% endif %}"></div>
+    <label for="{{ form.mail.id_for_label }}">
+    {{ form.mail }}
+    </label>
+    <p>Password :</p>
+    <div class="form-group {% if form.pwd.errors %}has-warning{% endif %}"></div>
+    <label for="{{ form.pwd.id_for_label }}">
+    {{ form.pwd }}
+    <p>Name :</p>
+    <div class="form-group {% if form.name.errors %}has-warning{% endif %}"></div>
+    <label for="{{ form.name.id_for_label }}">
+    {{ form.name }}
+    </label>
+    <p>Surname :</p>
+    <div class="form-group {% if form.surname.errors %}has-warning{% endif %}"></div>
+    <label for="{{ form.surname.id_for_label }}">
+    {{ form.surname }}
+    </label>
+    <p>Address :</p><p class="info">example : 44 Rue des Dervallières, 44000 Nantes</p>
+    <div class="form-group {% if form.adress.errors %}has-warning{% endif %}">
+    <label for="{{ form.adress.id_for_label }}">
+    {{ form.adress }}<br /></div>
+    <p class="info">We only use you're address to define you're neighborhood</p>
+    {% if used %}
+    <div class="used">This e-mail address is already in use.</div>
+    {% endif %}
+    {% if adress %}
+    <div class="used">Please enter a valid address</div>
+    {% endif %}
+    <button type="submit" class="btnv"><strong>Register</strong></button>
+    </label>
+</form>
+{% if errors %}
+<div>
+  {% for key, error in errors %}
+  {% autoescape off %}
+    {{ error }}
+  {% endautoescape %}
+  {% endfor %}
+</div>
+{% endif %}
+</div>
+</body>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% include 'map/header.html' %}
+{% block content %}
+<body>
+<div class=corps>
+    <h4>Declare a new store</h4>
+<form class="form-inline" action="{% url 'map:registerMag' %}" method="post">{% csrf_token %}
+    <p>Name of the store :</p>
+    <div class="form-group {% if form.name.errors %}has-warning{% endif %}"></div>
+    <label for="{{ form.name.id_for_label }}">
+    {{ form.name }}
+    </label>
+    <p>Address of the store :</p>
+    <p class="info">example : 44 Rue des Dervallières, 44000 Nantes</p>
+    <div class="form-group {% if form.adress.errors %}has-warning{% endif %}"></div>
+    <label for="{{ form.adress.id_for_label }}">
+    {{ form.adress }}
+    </label>
+    {% if used %}
+    <div class="used">This store is already declared.</div>
+    {% endif %}
+    <button type="submit" class="btnv"><strong>Declare store</strong></button>
+    </label>
+</form>
+{% if errors %}
+<div>
+  {% for key, error in errors %}
+  {% autoescape off %}
+    {{ error }}
+  {% endautoescape %}
+  {% endfor %}
+</div>
+{% endif %}
+</div>
+</body>
+{% endblock %}

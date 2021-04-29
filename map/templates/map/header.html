@@ -1,0 +1,228 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CitySupplier</title>
+    <style>
+      body {
+            margin: 0%;
+            font-family: "Palatino", "Bookman Old Style", sans-serif;
+            background: rgb(132,222,157);
+            background: linear-gradient(90deg, rgba(132,222,157,1) 0%, rgba(199,255,239,1) 35%, rgba(199,255,239,1) 61%, rgba(132,222,157,1) 100%);
+        }
+        .tete
+        {
+          background-color:rgb(128, 194, 148);
+          border-top-left-radius: 20px;
+          border-top-right-radius: 20px;
+          border-bottom: none;
+          border-left: none;
+          border-right: none;
+          padding: 20px 5%;
+          text-align: center;
+          color:rgb(53, 53, 53);
+          margin : 0% 10%;;
+        }
+        .legend
+        {
+          margin-left: 3%;
+          margin-right: 3%;
+          background-color:rgb(206, 247, 218);
+          border-top-left-radius: 20px;
+          border-top-right-radius: 20px;
+          border-bottom: none;
+          border-left: none;
+          border-right: none;
+          padding: 20px 5%;
+          text-align: center;
+          color:rgb(53, 53, 53)
+        }
+        .legend span.bleu
+        {
+          background-color:#22D;
+          border-style:solid;
+          border-color:black;
+          border-width: 1px;
+          padding-left: 1%;
+          padding-right: 1%;
+        }
+        .legend span.vert
+        {
+          background-color:#2D2;
+          border-style:solid;
+          border-color:black;
+          border-width: 1px;
+          padding-left: 1%;
+          padding-right: 1%;
+        }
+        .mymap
+        {
+          margin-left: 3%;
+          margin-right: 3%;
+          padding-bottom: 0%;
+        }
+        .maptete
+        {
+          background-color:rgb(128, 194, 148);
+          border-top-left-radius: 20px;
+          border-top-right-radius: 20px;
+          border-bottom: none;
+          border-left: none;
+          border-right: none;
+          padding: 10px 5%;
+          text-align: center;
+          color:rgb(53, 53, 53)
+        }
+        .parag
+        {
+          background-color: rgba(114, 114, 114, 0.5);
+          border-style : dotted;
+          border-color: rgba(114, 114, 114);
+          border-top: none;
+          border-bottom: none;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          margin: 0% 10%;
+        }
+        .parag p
+        {
+          margin-left : 30px;
+          color : rgb(73, 73, 73);
+          font-weight: bold;
+        }
+        .parag h2
+        {
+          color : rgb(53, 53, 53);
+          text-align: left;
+          margin-left: 15px;
+        }
+        .parag a
+        {
+          color: rgb(92, 58, 58);
+          text-decoration: none;
+        }
+        .parag a:hover
+        {
+          color: rgb(53, 53, 53);
+          text-decoration: none;
+        }
+        h1 {
+            color: #263029;
+            text-align: center;
+        }
+
+        h2 {
+            color: #263029;
+            text-align: center;
+        }
+
+        .topnav {
+          overflow: hidden;
+          background-color: #467a55
+        }
+        
+        .topnav a {
+          float: left;
+          color: #f2f2f2;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 17px;
+        }
+        
+        .topnav a:hover {
+          background-color: #72c68a;
+          color: black;
+        }
+        
+        .topnav a.active {
+          background-color: #1d3a26;
+          color: white;
+        }
+
+        .btnv {
+            border-color: rgb(29, 189, 74);
+            border-radius: 10px;
+            background-color: rgb(29, 189, 74);
+            padding: 10px 20px;
+            margin-top: 10%;
+            margin-left: 80%;
+            border-style:inherit;
+            text-align: center;
+            display: inline-block;
+            font-size: 20px;
+            cursor: pointer;
+            color: white;
+            font-weight: bolder;
+        }
+        .corps {
+            border-color: rgb(53, 53, 53);
+            border-style:solid;
+            border-left: none;
+            border-right: none;
+            background-color: rgb(181, 202, 209);
+            padding: 1% 5%;
+            margin: 10% 30%;
+            margin-right: 0%;
+            text-align: left;
+            display: inline-block;
+            font-size: 20px;
+            cursor: pointer;
+            color: rgb(53, 53, 53);
+        }
+        .corps p
+        {
+          margin-bottom: 0px;
+          margin-top: 10px;
+          font-weight: bolder;
+          font-size: medium;
+        }
+        .corps p.info
+        {
+            font-size: small;
+            font-weight: normal;
+            font-style: italic;
+        }
+        .corps h4
+        {
+          margin-bottom: 5%;
+        }
+        .form-group
+        {
+          display: inline;
+          border-color: rgb(29, 189, 74);
+        }
+        .has-warning
+        {
+          display: inline;
+          border-color: rgb(230, 4, 4);
+        }
+        .used
+        {
+          background-color: rgb(253, 67, 67);
+          border-color:rgb(100, 5, 5);
+          color: rgb(100, 5, 5);
+          border-style: solid;
+          border-spacing: 10px;
+          font-size: small;
+          font-style: italic;
+          border-radius: 5px;
+          padding: 30px, 8px;
+          margin: 10%;
+          text-align: center;
+        }
+        span.name {
+          text-align: right;
+          color: white;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="{% static 'map/assets/img/favicon.png' %}"/>
+</head>
+<div class="topnav">
+  <a href="https://citysupplier.herokuapp.com/">Home</a>
+  <a href="https://citysupplier.herokuapp.com/map">Map</a>
+  <a href="https://citysupplier.herokuapp.com/new_store/">Add store</a>
+  <a href="https://citysupplier.herokuapp.com/login/">Login</a>
+  <a href="https://citysupplier.herokuapp.com/?logout=True">Logout</a>
+  <a href="https://citysupplier.herokuapp.com/register/">Register</a>
+</div><br />

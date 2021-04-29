@@ -1,0 +1,14 @@
+{% include 'map/header.html' %}
+<body>
+{% block content %}
+<div class=legend>
+    <h2>la carte CitySupplier</h2>
+    <p><strong>L&eacute;gende</strong><br /><br />
+        <span class=bleu> </span>Position<br /><br />
+        <span class=vert> </span>Services<br /></p>
+</div>
+<div class=mymap>
+{{ my_map|safe }}
+{% endblock %}
+</div>
+</body>

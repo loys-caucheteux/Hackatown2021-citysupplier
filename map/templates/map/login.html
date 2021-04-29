@@ -1,0 +1,37 @@
+{% include 'map/header.html' %}
+{% block content %}
+<body>
+<div class=corps>
+    <h4>Login to your Account</h4>
+    <form class="form-inline" action="{% url 'map:login' %}" method="post">{% csrf_token %}
+    <p class="info">Emails are used as username.</p>
+    <p>E-mail :</p>
+    <div class="form-group {% if form.mail.errors %}has-warning{% endif %}">
+    <label for="{{ form.email.id_for_label }}">
+    {{ form.mail }}
+    </div>
+    </label>
+    <p>Password :</p>
+    <div class="form-group {% if form.pwd.errors %}has-warning{% endif %}">
+    <label for="{{ form.pwd.id_for_label }}">
+    {{ form.pwd }}
+    </div>
+    {% if fail %}
+    <div class="used">Wrong password and/or email.</div>
+    {% endif %}
+    <button type="submit" class="btnv"><strong>Login</strong></button>
+    </label>
+</form>
+</div>
+{% if errors %}
+<div>
+  {% for key, error in errors %}
+  {% autoescape off %}
+    {{ error }}
+  {% endautoescape %}
+  {% endfor %}
+</div>
+{% endif %}
+</div>
+</body>
+{% endblock %}
