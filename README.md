@@ -5,4 +5,4 @@ This app is a participative forum that let you register some places in a Databas
 and displays there location on a map.
 These are supposed to be restaurants or shops that respect the environement.
 
-It was deployed on Heroku and is now offline
+Deployed on heroku : (citysupplier)[https://citysupplier.herokuapp.com/]
